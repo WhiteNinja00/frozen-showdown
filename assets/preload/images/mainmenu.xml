@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mainmenu.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="creditsnormal0000" x="0" y="0" width="477" height="223"/>
+	<SubTexture name="creditsselected0000" x="487" y="0" width="614" height="280"/>
+	<SubTexture name="optionsnormal0000" x="1111" y="0" width="540" height="223"/>
+	<SubTexture name="optionsselected0000" x="0" y="290" width="698" height="280"/>
+	<SubTexture name="playnormal0000" x="708" y="290" width="290" height="223"/>
+	<SubTexture name="playselected0000" x="1008" y="290" width="368" height="280"/>
+</TextureAtlas>

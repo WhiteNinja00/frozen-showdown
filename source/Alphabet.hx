@@ -8,6 +8,7 @@ import flixel.math.FlxMath;
 import flixel.util.FlxTimer;
 import flixel.system.FlxSound;
 import flash.media.Sound;
+import flixel.text.FlxText;
 
 using StringTools;
 
@@ -114,79 +115,14 @@ class Alphabet extends FlxSpriteGroup
 
 	public function addText()
 	{
-		doSplitWords();
-
-		var xPos:Float = 0;
-		for (character in splitWords)
-		{
-			// if (character.fastCodeAt() == " ")
-			// {
-			// }
-
-			var spaceChar:Bool = (character == " " || (isBold && character == "_"));
-			if (spaceChar)
-			{
-				consecutiveSpaces++;
-			}
-
-			var isNumber:Bool = AlphaCharacter.numbers.indexOf(character) != -1;
-			var isSymbol:Bool = AlphaCharacter.symbols.indexOf(character) != -1;
-			var isAlphabet:Bool = AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1;
-			if ((isAlphabet || isSymbol || isNumber) && (!isBold || !spaceChar))
-			{
-				if (lastSprite != null)
-				{
-					xPos = lastSprite.x + lastSprite.width;
-				}
-
-				if (consecutiveSpaces > 0)
-				{
-					xPos += 40 * consecutiveSpaces * textSize;
-				}
-				consecutiveSpaces = 0;
-
-				// var letter:AlphaCharacter = new AlphaCharacter(30 * loopNum, 0, textSize);
-				var letter:AlphaCharacter = new AlphaCharacter(xPos, 0, textSize);
-
-				if (isBold)
-				{
-					if (isNumber)
-					{
-						letter.createBoldNumber(character);
-					}
-					else if (isSymbol)
-					{
-						letter.createBoldSymbol(character);
-					}
-					else
-					{
-						letter.createBoldLetter(character);
-					}
-				}
-				else
-				{
-					if (isNumber)
-					{
-						letter.createNumber(character);
-					}
-					else if (isSymbol)
-					{
-						letter.createSymbol(character);
-					}
-					else
-					{
-						letter.createLetter(character);
-					}
-				}
-
-				add(letter);
-				lettersArray.push(letter);
-
-				lastSprite = letter;
-			}
-
-			// loopNum += 1;
-		}
+		var coolText:FlxText;
+		coolText = new FlxText();
+		coolText.x = 0;
+		coolText.y = 0;
+		coolText.text = _finalText;
+		coolText.setFormat(Paths.font("bfb.ttf"), Std.int(70 * textSize), 0xFFFFFFFF, null, FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		coolText.borderSize = 5;
+		add(coolText);
 	}
 
 	function doSplitWords():Void
